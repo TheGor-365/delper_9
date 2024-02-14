@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2020_07_30_133817) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "contacts", force: :cascade do |t|
     t.string "email"
     t.text "message"
@@ -22,7 +25,7 @@ ActiveRecord::Schema.define(version: 2020_07_30_133817) do
   create_table "lessons", force: :cascade do |t|
     t.string "title"
     t.text "body"
-    t.integer "technology_id", null: false
+    t.bigint "technology_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["technology_id"], name: "index_lessons_on_technology_id"
@@ -31,7 +34,7 @@ ActiveRecord::Schema.define(version: 2020_07_30_133817) do
   create_table "projects", force: :cascade do |t|
     t.string "title"
     t.text "body"
-    t.integer "technology_id", null: false
+    t.bigint "technology_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["technology_id"], name: "index_projects_on_technology_id"
@@ -40,7 +43,7 @@ ActiveRecord::Schema.define(version: 2020_07_30_133817) do
   create_table "questions", force: :cascade do |t|
     t.text "question"
     t.text "answer"
-    t.integer "technology_id", null: false
+    t.bigint "technology_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["technology_id"], name: "index_questions_on_technology_id"
